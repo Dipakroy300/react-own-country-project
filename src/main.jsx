@@ -14,6 +14,7 @@ import Users from './component/Users/Users';
 import UserDetails from './component/UserDetails/UserDetails';
 import Albums from './component/Albums/Albums';
 import AlbumDetails from './component/AlbumDetails/AlbumDetails';
+import CountryDetails from './component/CountryDetails/CountryDetails';
 
 const router = createBrowserRouter([
   
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
         path:"countries",
         element: <Countries></Countries>,
         loader:()=>fetch('https://restcountries.com/v3.1/all')
+       }
+       ,
+      {
+        path:"country/:countryId",
+        element: <CountryDetails></CountryDetails>,
+        loader:({params})=>fetch(`https://restcountries.com/v3.1/alpha/${params.countryId}`)
        }
        ,
       {
